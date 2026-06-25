@@ -1,0 +1,134 @@
+/* ============================================================
+   Coup de Feu · cdf-theme.css  (VERSION OPTIMISEE)
+   Approche : on theme Bootstrap 5.3 par son API de variables CSS
+   (--bs-*) et on s'appuie sur les utilitaires. Le CSS sur-mesure
+   se réduit aux tokens + 2 composants vraiment spécifiques (flammes,
+   pastille dispo). Tout le reste = composants Bootstrap natifs.
+
+   Côté Rails : ce fichier ≈ config/_bootstrap_variables.scss
+   (surcharge $primary/$success AVANT @import "bootstrap") + un mini
+   components/_flammes.scss. Pas de réécriture de boutons/cards/badges.
+   ============================================================ */
+
+:root {
+  --cdf-orange: #FF3D00;
+  --cdf-orange-700: #E03200;
+  --cdf-orange-800: #B82800;
+  --cdf-orange-soft: #FFF1EA;
+  --cdf-orange-tint: #FFE3D2;
+  --cdf-green: #157A45;
+  --cdf-green-700: #0F5C33;
+  --cdf-ink: #0B0B0B;
+  --cdf-ink-2: #4A4945;
+  --cdf-ink-3: #8C8A83;
+  --cdf-ink-4: #BAB7AF;
+  --cdf-canvas: #EFECE6;
+  --cdf-canvas-2: #E7E3DB;
+  --cdf-canvas-warm: #F6F4EE;
+  --cdf-surface: #FFFFFF;
+  --cdf-surface-tint: #FAF8F3;
+  --cdf-border: #ECE9E3;
+  --cdf-border-2: #DAD6CD;
+  --cdf-shadow-sm: 0 1px 2px rgba(20,18,10,.04), 0 1px 1px rgba(20,18,10,.03);
+  --cdf-shadow-md: 0 1px 2px rgba(20,18,10,.04), 0 8px 24px -8px rgba(20,18,10,.10);
+  --cdf-shadow-lg: 0 1px 2px rgba(20,18,10,.04), 0 24px 48px -16px rgba(20,18,10,.18);
+  --cdf-font-mono: 'Geist Mono', ui-monospace, monospace;
+
+  /* --- Theming Bootstrap : on remappe les couleurs sémantiques --- */
+  --bs-primary: #FF3D00;
+  --bs-primary-rgb: 255, 61, 0;
+  --bs-success: #157A45;
+  --bs-success-rgb: 21, 122, 69;
+
+  /* Variantes "subtle" 5.3 (badges, fonds doux) recalées sur la marque */
+  --bs-primary-bg-subtle: #FFF1EA;
+  --bs-primary-border-subtle: #FFE3D2;
+  --bs-primary-text-emphasis: #B82800;
+  --bs-success-bg-subtle: #E0F3E8;
+  --bs-success-border-subtle: #BFE6CF;
+  --bs-success-text-emphasis: #0F5C33;
+
+  --bs-body-bg: #EFECE6;
+  --bs-body-color: #0B0B0B;
+  --bs-border-color: #ECE9E3;
+  --bs-border-radius: .9rem;
+  --bs-border-radius-lg: 1.1rem;
+  --bs-border-radius-xl: 1.6rem;
+  --bs-font-sans-serif: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+body {
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Boutons : on recolore via l'API CSS-var de Bootstrap (zéro réécriture) */
+.btn-primary {
+  --bs-btn-bg: var(--cdf-orange);
+  --bs-btn-border-color: var(--cdf-orange);
+  --bs-btn-hover-bg: var(--cdf-orange-700);
+  --bs-btn-hover-border-color: var(--cdf-orange-700);
+  --bs-btn-active-bg: var(--cdf-orange-700);
+  --bs-btn-active-border-color: var(--cdf-orange-700);
+  --bs-btn-disabled-bg: var(--cdf-orange);
+  --bs-btn-disabled-border-color: var(--cdf-orange);
+  box-shadow: 0 4px 16px rgba(255, 61, 0, .3);
+}
+.btn-success {
+  --bs-btn-bg: var(--cdf-green);
+  --bs-btn-border-color: var(--cdf-green);
+  --bs-btn-hover-bg: #0F5C33;
+  --bs-btn-hover-border-color: #0F5C33;
+  --bs-btn-active-bg: #0F5C33;
+  box-shadow: 0 4px 16px rgba(21, 122, 69, .28);
+}
+
+/* Formulaires : focus + cases sur la marque (en Rails, automatique via $primary) */
+.form-control:focus, .form-select:focus {
+  border-color: #FFB088;
+  box-shadow: 0 0 0 .25rem rgba(255, 61, 0, .18);
+}
+.form-check-input:checked { background-color: var(--cdf-orange); border-color: var(--cdf-orange); }
+.form-check-input:focus { border-color: #FFB088; box-shadow: 0 0 0 .25rem rgba(255, 61, 0, .18); }
+.form-switch .form-check-input:checked { background-color: var(--cdf-green); border-color: var(--cdf-green); }
+
+/* Texte mono / chiffres */
+.cdf-mono { font-family: var(--cdf-font-mono); font-variant-numeric: tabular-nums; }
+
+/* Fond sombre signature (hero / header photo) */
+.cdf-dark { background: #1B0A04; color: #fff; }
+
+/* ---- SEUL vrai composant maison : les flammes (rang Extra) ---- */
+.cdf-flames { display: inline-flex; align-items: center; gap: 3px; line-height: 0; }
+.cdf-flame { display: inline-flex; color: var(--cdf-orange); line-height: 0; }
+.cdf-flame--ghost { color: #FFE3D2; }
+.cdf-flame svg { display: block; }
+
+/* Placeholder image rayé (maquette) — le style ne s'applique qu'au label dédié */
+.cdf-img-ph {
+  display: flex; align-items: center; justify-content: center;
+  background: #1B0A04; color: rgba(255, 255, 255, .4);
+}
+.cdf-img-ph__tag {
+  font-family: var(--cdf-font-mono); font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .4);
+}
+
+/* Point pulsant (urgence) — petit, pas d'équivalent Bootstrap */
+.cdf-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--cdf-orange); position: relative; flex-shrink: 0; display: inline-block; }
+.cdf-pulse::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid var(--cdf-orange); animation: cdfPulse 1.6s ease-out infinite; }
+.cdf-pulse--white { background: #fff; }
+.cdf-pulse--white::after { border-color: #fff; }
+.cdf-pulse--green { background: var(--cdf-green); }
+.cdf-pulse--green::after { border-color: var(--cdf-green); }
+@keyframes cdfPulse { 0% { opacity: .7; transform: scale(.75); } 100% { opacity: 0; transform: scale(1.8); } }
+
+/* Cadre maquette (artefact de présentation, PAS de prod) */
+.cdf-phone { width: 390px; max-width: 100%; overflow: hidden; }
+
+/* Boutons-icônes ronds : on centre l'icône (le padding Bootstrap la décale) */
+.btn.rounded-circle { display: inline-flex; align-items: center; justify-content: center; padding: 0; }
+
+/* Flamme de MARQUE (Coup de Feu) — tracé custom, à utiliser sur les CTA
+   plutôt que fa-fire. Hérite de la couleur du texte (currentColor). */
+.cdf-fire { display: inline-block; vertical-align: -.18em; }

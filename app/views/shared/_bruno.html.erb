@@ -1,0 +1,52 @@
+<%# Dispositif Bruno — bulle flottante + panneau de chat (uniquement sur la home) %>
+<%# Câblé Stimulus : data-controller="bruno". Voir app/javascript/controllers/bruno_controller.js %>
+<div data-controller="bruno">
+
+  <%# --- Bulle flottante d'appel --- %>
+  <div class="bruno-launcher" data-bruno-target="launcher">
+    <div class="bruno-hint" aria-hidden="true">Bruno est à votre écoute<span class="small">Une question ? Un renfort ? Demandez.</span></div>
+    <button class="bruno-fab" type="button" aria-label="Ouvrir le chat avec Bruno" data-action="click->bruno#open">
+      <span class="bruno-avatar">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c4 0 7-3 7-7 0-3-2-5-3-7-1 2-3 3-5 3 0-3 1-6 3-9-5 2-9 7-9 13a7 7 0 0 0 7 7z"/></svg>
+        <span class="bruno-avatar__dot"></span>
+      </span>
+    </button>
+  </div>
+
+  <%# --- Panneau de chat --- %>
+  <section class="bruno-panel" data-bruno-target="panel" role="dialog" aria-label="Chat avec Bruno" hidden>
+    <header class="bruno-head">
+      <span class="bruno-avatar bruno-avatar--lg">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c4 0 7-3 7-7 0-3-2-5-3-7-1 2-3 3-5 3 0-3 1-6 3-9-5 2-9 7-9 13a7 7 0 0 0 7 7z"/></svg>
+      </span>
+      <div class="flex-fill" style="min-width:0;">
+        <div class="fw-semibold" style="font-size:16px;letter-spacing:-.01em;">Bruno</div>
+        <div class="d-flex align-items-start gap-2" style="font-size:12px;color:rgba(255,255,255,.7);">
+          <span class="cdf-pulse cdf-pulse--green" style="width:7px;height:7px;margin-top:4px;"></span>
+          <span>Assistant Coup de Feu · répond en un éclair</span>
+        </div>
+      </div>
+      <button class="bruno-iconbtn text-white-50" type="button" aria-label="Fermer" data-action="click->bruno#close"><i class="fa-solid fa-xmark" style="font-size:18px;"></i></button>
+    </header>
+
+    <div class="bruno-body" data-bruno-target="thread">
+      <div class="bruno-row bruno-row--in">
+        <span class="bruno-avatar bruno-avatar--sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c4 0 7-3 7-7 0-3-2-5-3-7-1 2-3 3-5 3 0-3 1-6 3-9-5 2-9 7-9 13a7 7 0 0 0 7 7z"/></svg></span>
+        <div class="bruno-bubble">Bonjour, je suis Bruno. Un renfort à trouver, une question sur Coup de Feu ? Je vous aiguille en un éclair.</div>
+      </div>
+      <div class="bruno-quick">
+        <button class="bruno-chip" type="button" data-action="click->bruno#quick">Lancer une alerte</button>
+        <button class="bruno-chip" type="button" data-action="click->bruno#quick">Combien ça coûte ?</button>
+        <button class="bruno-chip" type="button" data-action="click->bruno#quick">Comment ça marche ?</button>
+      </div>
+    </div>
+
+    <footer class="bruno-foot">
+      <form class="bruno-input" data-action="submit->bruno#send">
+        <input type="text" placeholder="Écrivez à Bruno…" aria-label="Votre message" data-bruno-target="input" />
+        <button class="bruno-iconbtn" type="button" aria-label="Message vocal" data-action="click->bruno#mic"><i class="fa-solid fa-microphone" style="font-size:16px;"></i></button>
+        <button class="bruno-send" type="submit" aria-label="Envoyer"><i class="fa-solid fa-paper-plane" style="font-size:15px;"></i></button>
+      </form>
+    </footer>
+  </section>
+</div>

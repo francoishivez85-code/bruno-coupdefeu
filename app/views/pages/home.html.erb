@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# Page d'accueil réduite Hero sombre + appel à Nono! %>
+<section class="cdf-home-hero d-flex flex-column align-items-center justify-content-center text-center">
+  <%= image_tag "logo-white.png", alt: "Coup de Feu", class: "cdf-home-logo mb-4" %>
+  <h1 class="hero-headline mb-3">Le renfort qui arrive avant le coup de feu.</h1>
+  <p class="cdf-home-sub lead mb-4">
+    Une question, un renfort urgent&nbsp;? Demandez à <strong>Bruno</strong>.
+  </p>
+  <p class="cdf-home-hint">
+  Bruno vous attend en bas à droite <i class="fa-solid fa-arrow-down ms-1"></i>
+</p>
+</section>
+
+<%= render "shared/bruno" %>

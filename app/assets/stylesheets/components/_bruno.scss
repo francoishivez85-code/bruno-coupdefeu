@@ -1,0 +1,87 @@
+/* ============================================================
+   Coup de Feu — Page d'accueil réduite + dispositif Bruno
+   Styles repris de la maquette "Accueil Bruno".
+   S'appuie sur les variables --cdf-* de cdf-theme.scss.
+   ============================================================ */
+
+/* ---- Logo de la navbar ---- */
+.navbar .navbar-brand img { height: 38px; width: auto; }
+
+/* ---- Home réduit : hero dégradé sombre ---- */
+.cdf-home-hero {
+  min-height: calc(100vh - 72px);
+  padding: 64px 16px;
+  background: radial-gradient(120% 120% at 50% 0%, #3A1206 0%, #1B0A04 60%);
+}
+.cdf-home-logo { height: 64px; }
+.hero-headline {
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -.035em;
+  line-height: 1.05;
+  color: #fff;
+  text-wrap: balance;
+  max-width: 700px;
+}
+.cdf-home-sub  { max-width: 540px; color: rgba(255, 255, 255, .82); }
+.cdf-home-hint { color: rgba(255, 255, 255, .6); font-size: 14px; }
+
+/* ---- Avatar Bruno (petit = bulle, moyen/grand = header chat) ---- */
+.bruno-avatar { border-radius: 50%; background: radial-gradient(120% 120% at 30% 20%, #FF6A33 0%, #FF3D00 55%, #E03200 100%); color: #fff; display: inline-flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0; box-shadow: 0 4px 14px rgba(255,61,0,.34); }
+.bruno-avatar svg { display: block; filter: drop-shadow(0 1px 1px rgba(0,0,0,.18)); }
+.bruno-avatar--sm { width: 34px; height: 34px; }
+.bruno-avatar--md { width: 44px; height: 44px; }
+.bruno-avatar--lg { width: 60px; height: 60px; }
+.bruno-avatar__dot { position: absolute; right: -1px; bottom: -1px; width: 13px; height: 13px; border-radius: 50%; background: var(--cdf-green); border: 2.5px solid #fff; }
+.bruno-avatar--lg .bruno-avatar__dot { width: 16px; height: 16px; }
+
+/* ---- Bulle flottante d'appel ---- */
+.bruno-launcher { position: fixed; right: 24px; bottom: 24px; z-index: 1045; display: flex; align-items: center; gap: 12px; }
+.bruno-hint { background: #fff; color: var(--cdf-ink); font-size: 13.5px; font-weight: 600; letter-spacing: -.01em; padding: 9px 14px; border-radius: 999px; box-shadow: var(--cdf-shadow-md); white-space: nowrap; opacity: 0; transform: translateX(8px); transition: opacity .18s ease, transform .18s ease; pointer-events: none; }
+.bruno-hint .small { display: block; font-weight: 500; font-size: 11px; color: var(--cdf-ink-3); }
+.bruno-fab { width: 64px; height: 64px; border-radius: 50%; border: none; padding: 0; background: transparent; cursor: pointer; position: relative; }
+.bruno-fab .bruno-avatar { width: 64px; height: 64px; }
+.bruno-fab .bruno-avatar__dot { width: 13px; height: 13px; right: -2px; bottom: -2px; z-index: 1; }
+.bruno-launcher:hover .bruno-hint { opacity: 1; transform: translateX(0); }
+.bruno-fab::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--cdf-orange); animation: cdfPulse 1.8s ease-out infinite; pointer-events: none; }
+
+/* ---- Panneau de chat ---- */
+.bruno-panel { position: fixed; right: 24px; bottom: 24px; z-index: 1050; width: 380px; max-width: calc(100vw - 32px); height: 600px; max-height: calc(100vh - 48px); background: #fff; border-radius: 22px; box-shadow: 0 30px 70px -20px rgba(20,18,10,.45); display: flex; flex-direction: column; overflow: hidden; transform-origin: bottom right; }
+.bruno-panel[hidden] { display: none; }
+.bruno-head { background: #1B0A04; color: #fff; padding: 14px 16px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.bruno-body { flex: 1; overflow-y: auto; padding: 18px 16px; background: var(--cdf-canvas-warm, #F6F4EE); display: flex; flex-direction: column; gap: 12px; }
+.bruno-row { display: flex; align-items: flex-end; gap: 8px; max-width: 88%; }
+.bruno-row--in { align-self: flex-start; }
+.bruno-row--out { align-self: flex-end; flex-direction: row-reverse; }
+.bruno-bubble { padding: 10px 13px; border-radius: 16px; font-size: 13.5px; line-height: 1.45; }
+.bruno-row--in .bruno-bubble { background: #fff; color: var(--cdf-ink); border: 1px solid var(--cdf-border); border-bottom-left-radius: 5px; }
+.bruno-row--out .bruno-bubble { background: var(--cdf-orange); color: #fff; border-bottom-right-radius: 5px; box-shadow: 0 2px 8px rgba(255,61,0,.28); }
+.bruno-quick { display: flex; flex-wrap: wrap; gap: 7px; padding: 0 2px 2px; }
+.bruno-chip { background: #fff; border: 1px solid var(--cdf-border-2); color: var(--cdf-ink); border-radius: 999px; padding: 7px 12px; font-size: 12.5px; font-weight: 500; cursor: pointer; }
+.bruno-chip:hover { background: var(--cdf-orange-soft); border-color: var(--cdf-orange-tint); color: var(--cdf-orange-800); }
+.bruno-foot { flex-shrink: 0; border-top: 1px solid var(--cdf-border); background: #fff; padding: 10px 12px; }
+.bruno-input { border: 1px solid var(--cdf-border-2); border-radius: 999px; padding: 6px 6px 6px 16px; display: flex; align-items: center; gap: 6px; }
+.bruno-input input { border: none; outline: none; flex: 1; font: inherit; font-size: 14px; background: transparent; }
+.bruno-iconbtn { width: 40px; height: 40px; border-radius: 50%; border: none; background: transparent; color: var(--cdf-ink-3); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; }
+.bruno-iconbtn:hover { color: var(--cdf-ink); background: var(--cdf-surface-tint); }
+.bruno-send { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--cdf-orange); color: #fff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 3px 10px rgba(255,61,0,.32); }
+.bruno-send:hover { background: var(--cdf-orange-700); }
+
+/* ---- Champs de formulaire visibles sur fond crème ---- */
+.form-control,
+.form-select {
+  background-color: #fff;
+  border-color: var(--cdf-border-2);
+}
+.form-check-input {
+  border-color: var(--cdf-ink-3);
+  border-width: 1.5px;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+@media (max-width: 575.98px) {
+  .bruno-panel { right: 8px; bottom: 8px; left: 8px; width: auto; height: calc(100vh - 16px); border-radius: 18px; }
+  .bruno-launcher { right: 16px; bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .bruno-fab::after { animation: none; } }
