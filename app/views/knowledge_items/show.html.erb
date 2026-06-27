@@ -1,0 +1,33 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-11 col-sm-10 col-md-8 col-lg-6">
+      <div class="card border-0 shadow-sm rounded-4">
+        <div class="card-body p-4 p-md-5">
+          <h2 class="h3 fw-semibold mb-4"><%= @knowledge_item.title %></h2>
+
+          <dl class="row">
+            <dt class="col-sm-3 text-secondary">Catégorie</dt>
+            <dd class="col-sm-9"><%= @knowledge_item.category %></dd>
+
+            <dt class="col-sm-3 text-secondary">Contenu</dt>
+            <dd class="col-sm-9"><%= simple_format(@knowledge_item.content) %></dd>
+
+            <dt class="col-sm-3 text-secondary">Source</dt>
+            <dd class="col-sm-9"><%= @knowledge_item.source %></dd>
+
+            <dt class="col-sm-3 text-secondary">Embedding</dt>
+            <dd class="col-sm-9 text-break"><%= @knowledge_item.embedding.presence || "—" %></dd>
+          </dl>
+
+          <div class="d-flex gap-2 mt-4">
+            <%= link_to "Modifier", edit_knowledge_item_path(@knowledge_item), class: "btn btn-outline-secondary rounded-pill" %>
+            <%= button_to "Supprimer", knowledge_item_path(@knowledge_item), method: :delete,
+                          class: "btn btn-outline-danger rounded-pill",
+                          data: { turbo_confirm: "Êtes-vous sûr ? Cette action est irréversible." } %>
+            <%= link_to "Retour", knowledge_items_path, class: "btn btn-link text-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

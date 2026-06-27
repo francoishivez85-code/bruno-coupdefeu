@@ -1,0 +1,17 @@
+<%= simple_form_for(knowledge_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title, required: true, label: "Titre" %>
+    <%= f.input :category, required: true, label: "Catégorie" %>
+    <%= f.input :content, required: true, label: "Contenu", as: :text, input_html: { rows: 6 } %>
+    <%= f.input :source, required: false, label: "Source" %>
+    <%= f.input :embedding, required: false, label: "Embedding",
+                hint: "Optionnel : vecteur sérialisé (JSON) généré par un service d'embedding",
+                as: :text, input_html: { rows: 4 } %>
+  </div>
+
+  <div class="form-actions d-grid mt-4">
+    <%= f.button :submit, "Enregistrer", class: "btn btn-primary btn-lg rounded-pill" %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h3 fw-semibold mb-0">Base de connaissances</h2>
+    <%= link_to "Nouvelle fiche", new_knowledge_item_path, class: "btn btn-primary rounded-pill" %>
+  </div>
+
+  <% if @knowledge_items.any? %>
+    <div class="card border-0 shadow-sm rounded-4">
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead>
+            <tr>
+              <th>Titre</th>
+              <th>Catégorie</th>
+              <th>Source</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @knowledge_items.each do |knowledge_item| %>
+              <tr>
+                <td><%= link_to knowledge_item.title, knowledge_item_path(knowledge_item) %></td>
+                <td><%= knowledge_item.category %></td>
+                <td><%= knowledge_item.source %></td>
+                <td class="text-end">
+                  <%= link_to "Modifier", edit_knowledge_item_path(knowledge_item), class: "btn btn-sm btn-outline-secondary rounded-pill" %>
+                  <%= button_to "Supprimer", knowledge_item_path(knowledge_item), method: :delete,
+                                class: "btn btn-sm btn-outline-danger rounded-pill",
+                                data: { turbo_confirm: "Êtes-vous sûr ? Cette action est irréversible." } %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% else %>
+    <p class="text-secondary">Aucune fiche pour le moment.</p>
+  <% end %>
+</div>
