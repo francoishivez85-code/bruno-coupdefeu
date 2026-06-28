@@ -1,7 +1,51 @@
-<%# Bouton d'appel Bruno — statique pour l'instant.
-    Panneau de chat, animation et contrôleur Stimulus plus tard %>
-<div class="bruno-launcher">
-  <button class="bruno-fab" type="button" aria-label="Discuter avec Bruno">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22c4 0 7-3 7-7 0-3-2-5-3-7-1 2-3 3-5 3 0-3 1-6 3-9-5 2-9 7-9 13a7 7 0 0 0 7 7z"/></svg>
-  </button>
+<%# Fenêtre Bruno : bouton d'appel (fermé) + panneau de chat (ouvert).
+    Ouverture/fermeture = contrôleur Stimulus "bruno" (classe is-open).
+    Envoi/réponse = Turbo Stream (voir messages/create.turbo_stream.erb). %>
+<div class="bruno-chat" data-controller="bruno">
+
+  <%# ---- État fermé : bouton d'appel ---- %>
+  <div class="bruno-launcher">
+    <button class="bruno-fab" type="button" aria-label="Discuter avec Bruno"
+            data-action="bruno#open">
+      <%= render "shared/bruno_flame" %>
+    </button>
+  </div>
+
+  <%# ---- État ouvert : panneau de chat ---- %>
+  <div class="bruno-panel">
+    <header class="bruno-panel__header">
+      <span class="bruno-panel__avatar"><%= render "shared/bruno_flame" %></span>
+      <div class="bruno-panel__id">
+        <strong>Bruno</strong>
+        <small>Assistant Coup de Feu, répond en un éclair</small>
+      </div>
+      <button class="bruno-panel__close" type="button" aria-label="Fermer"
+              data-action="bruno#close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </header>
+
+    <%# Turbo ajoute les nouvelles bulles à la fin de ce fil. %>
+    <div class="bruno-thread" id="bruno-thread">
+      <div class="bruno-msg bruno-msg--bot">
+        <span class="bruno-msg__avatar"><%= render "shared/bruno_flame" %></span>
+        <div class="bruno-bubble bruno-bubble--bot">
+          Salut, moi c'est Bruno. Une question sur Coup de Feu, un renfort à
+          trouver&nbsp;? Je t'aiguille en un éclair.
+        </div>
+      </div>
+    </div>
+
+    <%= render "shared/bruno_form" %>
+
+    <%# ---- PLACEHOLDER TÉLÉCHARGEMENT (feature transcript .txt) ----
+        Lien inerte : href="#", aucune logique. À brancher sur la branche
+        feature/bruno-transcript (action conversations#transcript + send_data).
+        Emplacement figé pour éviter les conflits Git. %>
+    <div class="bruno-foot">
+      <a href="#" class="bruno-download" title="Télécharger le transcript (bientôt disponible)">
+        <i class="fa-solid fa-download"></i> Télécharger la conversation
+      </a>
+    </div>
+  </div>
 </div>

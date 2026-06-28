@@ -1,0 +1,17 @@
+<%# Deux actions Turbo, sans une ligne de JS à écrire : %>
+
+<%# 1. On ajoute les deux nouvelles bulles à la fin du fil. %>
+<%= turbo_stream.append "bruno-thread" do %>
+  <div class="bruno-msg bruno-msg--user">
+    <div class="bruno-bubble bruno-bubble--user"><%= simple_format(@user_message.content) %></div>
+  </div>
+  <div class="bruno-msg bruno-msg--bot">
+    <span class="bruno-msg__avatar"><%= render "shared/bruno_flame" %></span>
+    <div class="bruno-bubble bruno-bubble--bot"><%= simple_format(@assistant_message.content) %></div>
+  </div>
+<% end %>
+
+<%# 2. On remplace le formulaire par un formulaire vide → le champ se vide. %>
+<%= turbo_stream.replace "bruno-form" do %>
+  <%= render "shared/bruno_form" %>
+<% end %>
