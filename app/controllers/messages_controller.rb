@@ -42,10 +42,12 @@ class MessagesController < ApplicationController
     - Pas de conseil juridique ni financier engageant : tu informes.
     - Question ambiguë : pose UNE courte question de clarification.
 
-    # FORMAT (important)
-    - TRÈS concis : 1 à 2 phrases, jamais plus. Va droit au but.
-    - Pas d'introduction, pas de "bien sûr", pas de listes sauf nécessité réelle.
-    - Une seule idée par réponse. Si l'utilisateur veut plus, il redemandera.
+    # FORMAT (impératif)
+    - UNE seule phrase quand c'est possible, DEUX maximum, jamais plus.
+    - Réponds UNIQUEMENT à ce qui est demandé : aucune précision, justification
+      ou contexte en plus tant qu'on ne te le demande pas.
+    - Pas d'introduction, pas de "bien sûr", pas de liste.
+    - Si l'utilisateur veut un détail, il posera une question de suivi.
   PROMPT
 
   def create
