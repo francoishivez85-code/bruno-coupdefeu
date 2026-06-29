@@ -1,0 +1,95 @@
+/* ---- Neon Embossed Login (page de connexion) ---- */
+.cdf-neon-login {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: radial-gradient(120% 120% at 50% 0%, #3A1206 0%, #1B0A04 60%);
+}
+
+.cdf-neon-card {
+  width: 100%;
+  max-width: 380px;
+  background: rgba(27, 10, 4, .9);
+  border-radius: 1.5rem;
+  padding: 2.5rem 2.75rem;
+  border: 1px solid rgba(255, 61, 0, .35);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 0 25px rgba(255, 61, 0, .35),
+    0 0 60px rgba(224, 50, 0, .25),
+    inset 0 0 12px rgba(11, 11, 11, .9);
+}
+
+.cdf-neon-card .login-title {
+  font-size: 1.3rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--cdf-orange-tint, #FFE3D2);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cdf-neon-card p {
+  color: rgba(255, 255, 255, .6);
+}
+
+.cdf-neon-card .form-label {
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .6);
+}
+
+.cdf-neon-card .form-control {
+  padding: .7rem .9rem;
+  border-radius: .75rem;
+  border: 1px solid rgba(255, 255, 255, .2);
+  background: linear-gradient(145deg, #0B0B0B, #1B0A04);
+  color: #fff;
+  box-shadow:
+    inset 2px 2px 4px rgba(0, 0, 0, .9),
+    inset -2px -2px 4px rgba(255, 255, 255, .06);
+}
+
+.cdf-neon-card .form-control::placeholder {
+  color: rgba(255, 255, 255, .35);
+}
+
+.cdf-neon-card .form-control:focus {
+  border-color: var(--cdf-orange, #FF3D00);
+  background: linear-gradient(145deg, #0B0B0B, #1B0A04);
+  color: #fff;
+  box-shadow:
+    0 0 12px rgba(255, 61, 0, .6),
+    inset 2px 2px 4px rgba(0, 0, 0, .9),
+    inset -2px -2px 4px rgba(255, 255, 255, .06);
+}
+
+.cdf-neon-card .form-check-label {
+  color: rgba(255, 255, 255, .6);
+}
+
+.cdf-neon-card a {
+  color: var(--cdf-orange-tint, #FFE3D2);
+}
+
+.cdf-neon-card .btn-primary {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 61, 0, .8);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: normal;
+  word-break: break-word;
+  animation: none;
+  box-shadow:
+    0 0 18px rgba(255, 61, 0, .8),
+    0 0 40px rgba(224, 50, 0, .7);
+}
+
+.cdf-neon-card .btn-primary:hover {
+  filter: brightness(1.08);
+}
