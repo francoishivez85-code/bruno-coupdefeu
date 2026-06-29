@@ -6,7 +6,7 @@
     <div class="bruno-bubble bruno-bubble--user"><%= simple_format(@user_message.content) %></div>
   </div>
   <div class="bruno-msg bruno-msg--bot">
-    <span class="bruno-msg__avatar"><%= render "shared/bruno_flame" %></span>
+    <span class="bruno-msg__avatar"><%= render "shared/bruno_avatar" %></span>
     <div class="bruno-bubble bruno-bubble--bot"><%= simple_format(@assistant_message.content) %></div>
   </div>
 <% end %>
