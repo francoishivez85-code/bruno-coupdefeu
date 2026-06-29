@@ -1,33 +1,27 @@
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-11 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-      <div class="card border-0 shadow-sm rounded-4">
-        <div class="card-body p-4 p-md-5">
-          <h2 class="h3 fw-semibold text-center mb-2">Mot de passe oublié ?</h2>
-          <p class="text-secondary text-center mb-4">On vous envoie un lien pour le réinitialiser.</p>
+<div class="cdf-neon-login">
+  <div class="cdf-neon-card">
+    <h2 class="login-title mb-2">Mot de passe oublié ?</h2>
+    <p class="text-center mb-4">On vous envoie un lien pour le réinitialiser.</p>
 
-          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-            <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= f.error_notification %>
 
-            <div class="form-inputs">
-              <%= f.input :email,
-                          required: true,
-                          autofocus: true,
-                          label: "Email",
-                          input_html: { autocomplete: "email", placeholder: "vous@exemple.com" } %>
-            </div>
-
-            <div class="form-actions d-grid mt-4">
-              <%= f.button :submit, "Envoyer le lien de réinitialisation", class: "btn btn-primary btn-lg rounded-pill" %>
-            </div>
-          <% end %>
-
-          <hr class="my-4">
-          <div class="text-center">
-            <%= render "devise/shared/links" %>
-          </div>
-        </div>
+      <div class="form-inputs">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    label: "Email",
+                    input_html: { autocomplete: "email", placeholder: "vous@exemple.com" } %>
       </div>
+
+      <div class="form-actions d-grid mt-4">
+        <%= f.button :submit, "Envoyer le lien de réinitialisation", class: "btn btn-primary btn-lg" %>
+      </div>
+    <% end %>
+
+    <hr class="my-4">
+    <div class="text-center">
+      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>

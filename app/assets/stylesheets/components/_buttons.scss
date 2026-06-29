@@ -1,0 +1,30 @@
+/* ---- Pulse animation on call-to-action buttons ---- */
+.btn-primary,
+.bruno-fab {
+  --cdf-pulse-color: 255, 61, 0; // orange de marque (--cdf-orange)
+  animation: cdf-btn-pulse 2s infinite;
+}
+
+.btn-primary:hover,
+.bruno-fab:hover {
+  animation-play-state: paused;
+}
+
+@keyframes cdf-btn-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--cdf-pulse-color), .7);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(var(--cdf-pulse-color), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--cdf-pulse-color), 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .bruno-fab {
+    animation: none;
+  }
+}

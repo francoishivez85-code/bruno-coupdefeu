@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Bruno : une seule route, l'envoi d'un message (réponse en Turbo Stream).
   # Pas de page dédiée, la fenêtre est un partial superposé.
   resources :messages, only: [:create]
+  resources :knowledge_items
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
