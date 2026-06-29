@@ -1,0 +1,24 @@
+<%# Barre de saisie est isolée pour pouvoir la re-render (la vider) après
+    chaque envoi via Turbo sans JS. L'id "bruno-form" est la cible du replace %>
+<%= form_with url: messages_path, method: :post, id: "bruno-form", class: "bruno-input" do |f| %>
+
+  <%# ---- PLACEHOLDER MICRO (François :) branche feature/bruno-micro) ----
+      Bouton actuellement inactif.
+      A faire :
+        - ajouter open()/close() existe déjà dans bruno_controller.js ;
+          y ajouter une action micro (ex data-action="bruno#toggleMic") ;
+        - cibler le champ ci-dessous (data-bruno-target="input") ;
+        - Web Speech API pour remplir le champ.
+      Ne PAS déplacer ce bouton : emplacement figé. %>
+  <button type="button" class="bruno-mic" aria-label="Dicter au micro"
+          title="Micro (bientôt disponible)">
+    <i class="fa-solid fa-microphone"></i>
+  </button>
+
+  <%= f.text_field :content, placeholder: "Écris à Bruno…", autocomplete: "off",
+                   class: "bruno-input__field" %>
+
+  <button type="submit" class="bruno-send" aria-label="Envoyer">
+    <i class="fa-solid fa-paper-plane"></i>
+  </button>
+<% end %>
