@@ -23,10 +23,11 @@
   animation: none;
 }
 
-// Nav-links : effet feu au survol
+
 .navbar-lewagon .nav-link {
   position: relative;
   padding-bottom: 6px;
+  color: rgba(255, 255, 255, .9) !important;
   transition: color .2s ease, text-shadow .2s ease;
 
   &::after {
@@ -37,17 +38,17 @@
     width: 0;
     height: 2px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #FF6A33, #FF3D00, #FF6A33);
-    box-shadow: 0 0 6px rgba(255, 61, 0, .9), 0 0 14px rgba(255, 61, 0, .5);
+    background: linear-gradient(90deg, #B82800, #E03200, #B82800);
+    box-shadow: 0 0 6px rgba(176, 40, 0, .9), 0 0 14px rgba(176, 40, 0, .5);
     transition: width .25s ease, left .25s ease;
   }
 
   &:hover,
   &.active {
-    color: #FF6A33 !important;
+    color: #E03200 !important;
     text-shadow:
-      0 0 8px rgba(255, 100, 50, .7),
-      0 0 20px rgba(255, 61, 0, .35);
+      0 0 8px rgba(224, 50, 0, .6),
+      0 0 20px rgba(176, 40, 0, .3);
 
     &::after {
       width: 100%;
