@@ -4,6 +4,7 @@
 <%= turbo_stream.append "bruno-thread" do %>
   <div class="bruno-msg bruno-msg--user">
     <div class="bruno-bubble bruno-bubble--user"><%= simple_format(@user_message.content) %></div>
+    <span class="bruno-msg__avatar bruno-msg__avatar--user"><%= current_user.email[0].upcase %></span>
   </div>
   <div class="bruno-msg bruno-msg--bot">
     <span class="bruno-msg__avatar"><%= render "shared/bruno_avatar" %></span>

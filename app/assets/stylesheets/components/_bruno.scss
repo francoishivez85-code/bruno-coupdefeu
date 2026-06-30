@@ -137,6 +137,15 @@ $bruno-border:   rgba(255, 61, 0, .22);
   color: #fff; background: $bruno-gradient;
   box-shadow: 0 0 8px rgba(255, 61, 0, .4);
 }
+.bruno-msg__avatar--user {
+  background: rgba(255, 255, 255, .1);
+  color: #FF6A33;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0;
+  border: 1px solid rgba(255, 61, 0, .4);
+  box-shadow: 0 0 8px rgba(255, 61, 0, .25);
+}
 
 .bruno-bubble {
   max-width: 76%; padding: 10px 14px; font-size: 14px; line-height: 1.48;
