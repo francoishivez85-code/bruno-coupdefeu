@@ -8,7 +8,7 @@
 // Particule braise individuelle
 .cdf-ember {
   position: absolute;
-  bottom: 5%;
+  bottom: var(--b, 5%);
   left: var(--l, 50%);
   width: var(--s, 3px);
   height: var(--s, 3px);
