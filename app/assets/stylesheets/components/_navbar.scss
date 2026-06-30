@@ -22,3 +22,36 @@
 .navbar-lewagon .btn-primary {
   animation: none;
 }
+
+// Nav-links : effet feu au survol
+.navbar-lewagon .nav-link {
+  position: relative;
+  padding-bottom: 6px;
+  transition: color .2s ease, text-shadow .2s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #FF6A33, #FF3D00, #FF6A33);
+    box-shadow: 0 0 6px rgba(255, 61, 0, .9), 0 0 14px rgba(255, 61, 0, .5);
+    transition: width .25s ease, left .25s ease;
+  }
+
+  &:hover,
+  &.active {
+    color: #FF6A33 !important;
+    text-shadow:
+      0 0 8px rgba(255, 100, 50, .7),
+      0 0 20px rgba(255, 61, 0, .35);
+
+    &::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}
