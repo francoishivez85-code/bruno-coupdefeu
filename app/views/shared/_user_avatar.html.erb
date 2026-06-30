@@ -1,0 +1,8 @@
+<% user ||= current_user %>
+<% size ||= 80 %>
+<span class="cdf-user-av" data-initial="<%= user.email[0].upcase %>">
+  <%= image_tag user_gravatar_url(user, size: size),
+      alt: user.email[0].upcase,
+      class: "cdf-user-av__img",
+      onerror: "this.parentElement.classList.add('no-photo')" %>
+</span>
