@@ -1,1 +1,45 @@
-// Specific CSS for your home-page
+// Hero home — braises flottantes
+
+.cdf-home-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+// Particule braise individuelle
+.cdf-ember {
+  position: absolute;
+  bottom: 5%;
+  left: var(--l, 50%);
+  width: var(--s, 3px);
+  height: var(--s, 3px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #FFD0A0 0%, #FF6A33 45%, #E03200 100%);
+  box-shadow: 0 0 4px 1px rgba(255, 61, 0, .6);
+  opacity: 0;
+  pointer-events: none;
+  animation: cdf-ember-rise var(--dur, 6s) var(--delay, 0s) infinite ease-in;
+}
+
+@keyframes cdf-ember-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) scale(1);
+    filter: blur(0px);
+  }
+  12% {
+    opacity: .85;
+  }
+  70% {
+    opacity: .5;
+    filter: blur(.5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-72vh) translateX(var(--d, 16px)) scale(.25);
+    filter: blur(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdf-ember { animation: none; opacity: 0; }
+}
