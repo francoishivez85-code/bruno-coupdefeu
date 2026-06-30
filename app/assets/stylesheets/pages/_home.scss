@@ -1,29 +1,5 @@
 
 
-// Curseur custom — point orange
-.cdf-cursor-active,
-.cdf-cursor-active * { cursor: none !important; }
-
-.cdf-cursor {
-  position: fixed;
-  top: 0; left: 0;
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: #FF3D00;
-  box-shadow: 0 0 6px rgba(255, 61, 0, .8), 0 0 14px rgba(255, 61, 0, .4);
-  pointer-events: none;
-  z-index: 99999;
-  transition: width .15s ease, height .15s ease, background .15s ease, box-shadow .15s ease;
-  will-change: transform;
-}
-
-.cdf-cursor.is-hover {
-  width: 28px; height: 28px;
-  background: transparent;
-  border: 2px solid #FF3D00;
-  box-shadow: 0 0 10px rgba(255, 61, 0, .6), 0 0 24px rgba(255, 61, 0, .3);
-}
-
 .cdf-home-hero {
   position: relative;
   overflow: hidden;
