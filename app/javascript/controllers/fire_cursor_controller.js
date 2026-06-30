@@ -50,8 +50,8 @@ export default class extends Controller {
     this.lx = e.clientX
     this.ly = e.clientY
 
-    // Plus on va vite, plus on crée de particules (max 18)
-    const count = Math.min(Math.ceil(speed * 0.9), 18)
+    // Plus on va vite, plus on crée de particules (max 7)
+    const count = Math.min(Math.ceil(speed * 0.35), 7)
     for (let i = 0; i < count; i++) this.#spawn(speed)
   }
 
@@ -63,8 +63,8 @@ export default class extends Controller {
       vx:    (Math.random() - 0.5) * 1.2,
       vy:    -(Math.random() * 2.5 + 1.2),        // monte toujours
       life:  1,
-      decay: Math.random() * 0.018 + 0.012,
-      r:     Math.random() * (s * 0.45 + 5) + 3,  // taille selon vitesse
+      decay: Math.random() * 0.03 + 0.025,
+      r:     Math.random() * (s * 0.18 + 3) + 2,  // taille selon vitesse
     })
   }
 
@@ -93,7 +93,7 @@ export default class extends Controller {
 
       ctx.save()
       ctx.globalCompositeOperation = "lighter"
-      ctx.globalAlpha = a
+      ctx.globalAlpha = a * 0.55
       ctx.beginPath()
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
       ctx.fillStyle = g
